@@ -40,7 +40,10 @@ const Detail = ({ setActive }) => {
     <div className="single">
       <div
         className="blog-title-box"
-        style={{ backgroundImage: `url('${blog?.imgUrl}')` }}
+        style={{
+          backgroundImage: `url('${blog?.imgUrl}')`,
+          objectFit: "fill",
+        }}
       >
         <div className="overlay"></div>
         <div className="blog-title">

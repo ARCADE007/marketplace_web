@@ -14,6 +14,7 @@ import Header from "./components/Header";
 import Auth from "./pages/Auth";
 import { auth } from "./firebase";
 import { signOut } from "firebase/auth";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   const [active, setActive] = useState("home");
@@ -48,8 +49,10 @@ function App() {
         handleLogout={handleLogout}
       />
       <ToastContainer position="top-center" />
+
       <Routes>
         <Route path="/" element={<Home setActive={setActive} user={user} />} />
+        <Route path="/resetPassword" element={<ForgotPassword />} />
         <Route path="/detail/:id" element={<Detail setActive={setActive} />} />
         <Route
           path="/create"

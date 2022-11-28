@@ -3,6 +3,7 @@ import FontAwesome from "react-fontawesome";
 import { Link } from "react-router-dom";
 import { excerpt } from "../utility";
 import { useState } from "react";
+import { COLORS } from "../Colors";
 
 const BlogSection = ({ blogs, user, handleDelete }) => {
   const userId = user?.uid;
@@ -24,7 +25,9 @@ const BlogSection = ({ blogs, user, handleDelete }) => {
         />
       </form>
       <div className="blog-heading text-start py-2 mb-4 mx-auto">
-        <h1 className="">Artists</h1>
+        <h1 className="" style={{ color: COLORS.primary4 }}>
+          Artists
+        </h1>
       </div>
       {blogs
         ?.filter((item) => {

@@ -17,14 +17,17 @@ import { toast } from "react-toastify";
 const initialState = {
   fullname: "",
   tags: "",
-
+  location: "",
   category: "",
   description: "",
   youtube: "",
+  youtubeLink: "",
   instagram: "",
   mail: "",
   website: "",
 };
+
+const locationOption = ["Jaipur", "Udaipur", "Delhi", "Mumbai", "Bengaluru"];
 
 const categoryOption = [
   "Music",
@@ -50,8 +53,9 @@ const AddEditBlog = ({ user, setActive }) => {
   const {
     fullname,
     tags,
+    youtubeLink,
     category,
-
+    location,
     description,
     youtube,
     instagram,
@@ -121,9 +125,16 @@ const AddEditBlog = ({ user, setActive }) => {
   const onCategoryChange = (e) => {
     setForm({ ...form, category: e.target.value });
   };
+  const onLocationChange = (e) => {
+    setForm({ ...form, location: e.target.value });
+  };
 
   const handleYoutubeChange = (e) => {
     setForm({ ...form, youtube: e.target.value });
+  };
+
+  const handleYoutubeLinkChange = (e) => {
+    setForm({ ...form, youtubeLink: e.target.value });
   };
 
   const handleMailChange = (e) => {
@@ -140,7 +151,9 @@ const AddEditBlog = ({ user, setActive }) => {
     e.preventDefault();
     if (
       category &&
+      location &&
       tags &&
+      youtubeLink &&
       fullname &&
       description &&
       youtube &&
@@ -226,6 +239,22 @@ const AddEditBlog = ({ user, setActive }) => {
                   ))}
                 </select>
               </div>
+
+              <div className="col-12 py-3">
+                <select
+                  value={location}
+                  onChange={onLocationChange}
+                  className="catg-dropdown"
+                >
+                  <option>Please select artists location</option>
+                  {locationOption.map((option, index) => (
+                    <option value={option || ""} key={index}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
               <div className="col-12 py-3">
                 <textarea
                   className="form-control description-box"
@@ -261,6 +290,16 @@ const AddEditBlog = ({ user, setActive }) => {
                   name="youtube"
                   value={youtube}
                   onChange={handleYoutubeChange}
+                />
+              </div>
+              <div className="col-12 py-3">
+                <input
+                  type="text"
+                  className="form-control input-text-box"
+                  placeholder="Youtube Video Link"
+                  name="youtubeLink"
+                  value={youtubeLink}
+                  onChange={handleYoutubeLinkChange}
                 />
               </div>
               <div className="col-12 py-3">

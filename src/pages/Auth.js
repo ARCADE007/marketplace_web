@@ -6,7 +6,7 @@ import {
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const initialState = {
   firstName: "",
@@ -116,6 +116,7 @@ const Auth = ({ setActive, setUser }) => {
                   onChange={handleChange}
                 />
               </div>
+
               {signUp && (
                 <div className="col-12 py-3">
                   <input
@@ -151,6 +152,20 @@ const Auth = ({ setActive, setUser }) => {
                       >
                         Sign Up
                       </span>
+                    </p>
+                    <p className="small fw-bold mt-2 pt-1 mb-0">
+                      Forgot Password!&nbsp;
+                      <Link
+                        style={{ textDecoration: "none" }}
+                        to={"/resetPassword"}
+                      >
+                        <span
+                          className="link-danger"
+                          style={{ textDecoration: "none", cursor: "pointer" }}
+                        >
+                          Reset
+                        </span>
+                      </Link>
                     </p>
                   </div>
                 </>
